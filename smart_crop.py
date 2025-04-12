@@ -44,6 +44,6 @@ ph = 6.5        # pH
 prediction = model.predict([[soil, rain, temp, ph]])
 
 # Step 7: Show result
-print("🔍 Based on the data entered:")
+print("Based on the data entered:")
 print(f"   Soil Type: {soil}, Rainfall: {rain} mm, Temperature: {temp}°C, pH: {ph}")
-print("✅ Recommended Crop for You:", prediction[0])
+print("Recommended Crop for You:", prediction[0])
