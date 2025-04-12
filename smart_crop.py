@@ -1,8 +1,11 @@
-# crop_recommendation.py
-# Smart Crop Recommendation System by Iqra
+# crop_recommendation_rf.py
+# Smart Crop Recommendation System using Random Forest - by Iqra
 
 import pandas as pd
-from sklearn.tree import DecisionTreeClassifier
+import numpy as np
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
 
 # Step 1: Create sample dataset
 data = {
@@ -16,34 +19,39 @@ data = {
 # Step 2: Convert to DataFrame
 df = pd.DataFrame(data)
 
-# Step 3: Prepare features (X) and target (y)
+# Step 3: Prepare features and labels
 X = df[['Soil_Type', 'Rainfall', 'Temperature', 'pH']]
 y = df['Recommended_Crop']
 
-# Step 4: Train model
-model = DecisionTreeClassifier()
-model.fit(X, y)
+# Step 4: Split data
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=42)
 
-# Step 5: Default input values
+# Step 5: Train Random Forest model
+model = RandomForestClassifier(n_estimators=100, random_state=42)
+model.fit(X_train, y_train)
+
+# Step 6: Evaluate accuracy
+y_pred = model.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+
+# Step 7: Welcome message
 print("🌾 Welcome to Smart Crop Recommendation System 🌿")
 print("Using predefined input values for prediction...\n")
+print(f"Model Accuracy: {accuracy * 100:.2f}%\n")
 
-# Default values (change these as needed)
-soil = 1        # 1=Loamy
+# Step 8: Default input values
+soil = 1        # Loamy
 rain = 210.0    # mm
 temp = 27.0     # °C
 ph = 6.5        # pH
 
-# You can also use user input by uncommenting the following:
-# soil = int(input("Enter Soil Type (1=Loamy, 2=Sandy, 3=Clay): "))
-# rain = float(input("Enter average Rainfall (in mm): "))
-# temp = float(input("Enter average Temperature (°C): "))
-# ph = float(input("Enter Soil pH: "))
+# Step 9: Prepare input
+input_data = pd.DataFrame(np.array([[soil, rain, temp, ph]]), columns=['Soil_Type', 'Rainfall', 'Temperature', 'pH'])
 
-# Step 6: Make prediction
-prediction = model.predict([[soil, rain, temp, ph]])
+# Step 10: Make prediction
+prediction = model.predict(input_data)
 
-# Step 7: Show result
+# Step 11: Show result
 print("Based on the data entered:")
 print(f"   Soil Type: {soil}, Rainfall: {rain} mm, Temperature: {temp}°C, pH: {ph}")
-print("Recommended Crop for You:", prediction[0])
+print("🌱 Recommended Crop for You:", prediction[0])
