@@ -27,6 +27,10 @@ Sample dataset created with 8 records including:
 2. Run `main.py`
 3. Enter the required values in the terminal
 4. Get the recommended crop!
+## 📷 Demo Screenshot
+
+![Terminal Output](Screenshot.PNG)
+
 
 ##  Future Improvements
 - Add real-world dataset
