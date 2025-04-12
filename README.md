@@ -29,7 +29,7 @@ Sample dataset created with 8 records including:
 4. Get the recommended crop!
 ## 📷 Demo Screenshot
 
-![Terminal Output](Screenshot.PNG)
+![Terminal Output](screenshot.png)
 
 
 ##  Future Improvements
