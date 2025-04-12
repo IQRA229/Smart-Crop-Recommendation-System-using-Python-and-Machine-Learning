@@ -12,7 +12,7 @@ To develop a crop recommendation system using Decision Tree Classifier in Python
 - Language: Python
 - Libraries: pandas, scikit-learn
 - IDE: VS Code
-- Algorithm: DecisionTreeClassifier
+- Algorithm: RandomForestClassifier
 
 ##  Dataset
 Sample dataset created with 8 records including:
@@ -29,7 +29,7 @@ Sample dataset created with 8 records including:
 4. Get the recommended crop!
 ## 📷 Demo Screenshot
 
-![Terminal Output](screenshot.png.PNG)
+![Terminal Output](Output.PNG)
 
 
 ##  Future Improvements
